@@ -41,7 +41,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - role: avanov.pyenv
+         - role: fingul.pyenv
            pyenv_path: "~{{ ansible_ssh_user }}/.pyenv"
            pyenv_runcom: "~{{ ansible_ssh_user }}/.zshrc"
            pyenv_owner: "{{ ansible_ssh_user }}"
