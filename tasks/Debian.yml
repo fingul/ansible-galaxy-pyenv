@@ -46,7 +46,7 @@
     group: "{{ pyenv_owner }}"
     mode: "0644"
 
-- name: Modify .bashrc
+- name: Modify "{{ pyenv_runcom }}"
   lineinfile: dest="{{ pyenv_runcom }}"
               regexp="\.pyenvrc$"
               line="source {{ pyenv_path }}/.pyenvrc"
