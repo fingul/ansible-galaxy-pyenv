@@ -1,7 +1,7 @@
 avanov.pyenv
 ============
 
-[![Build Status](https://travis-ci.org/avanov/ansible-galaxy-pyenv.svg)](https://travis-ci.org/avanov/ansible-galaxy-pyenv)
+[![Build Status](https://travis-ci.org/fingul/ansible-galaxy-pyenv.svg)](https://travis-ci.org/fingul/ansible-galaxy-pyenv)
 
 
 Ansible Galaxy role for [pyenv](https://github.com/yyuu/pyenv) on Ubuntu.
@@ -9,7 +9,7 @@ Ansible Galaxy role for [pyenv](https://github.com/yyuu/pyenv) on Ubuntu.
 Install it with the following command:
 
 ```bash
-$ ansible-galaxy install avanov.pyenv
+$ ansible-galaxy install fingul.pyenv
 ```
 
 Requirements
@@ -24,9 +24,11 @@ Here is the list of all variables and their default values:
 
 * ``pyenv_path: "{{ ansible_env.HOME }}/pyenv"``
 * ``pyenv_owner: "{{ ansible_env.USER }}"``
+* ``pyenv_runcom: "~/.bashrc"``
 * ``pyenv_python_versions: ["3.4.1"]``
-* ``pyenv_virtualenvs: [{ venv_name: "latest", py_version: "3.4.1" }]``
+* ``pyenv_virtualenvs: [{ venv_name: "latest", py_version: "3.5.1" }]``
 * ``pyenv_update_git_install: no``
+
 
 
 Dependencies
@@ -40,18 +42,19 @@ Example Playbook
     - hosts: servers
       roles:
          - role: avanov.pyenv
-           pyenv_path: "{{ home }}/pyenv"
-           pyenv_owner: "{{ instance_owner }}"
+           pyenv_path: "~{{ ansible_ssh_user }}/.pyenv"
+           pyenv_runcom: "~{{ ansible_ssh_user }}/.zshrc"
+           pyenv_owner: "{{ ansible_ssh_user }}"
            pyenv_update_git_install: no
            pyenv_python_versions:
-             - "3.4.1"
-             - "2.7.8"
+             - "3.5.1"
+             - "2.7.11"
            pyenv_virtualenvs:
              - venv_name: "latest_v3"
-               py_version: "3.4.1"
+               py_version: "3.5.1"
                
              - venv_name: "latest_v2"
-               py_version: "2.7.8"
+               py_version: "2.7.11"
 
 License
 -------
@@ -61,4 +64,4 @@ MIT
 Author Information
 ------------------
 
-Maxim Avanov (https://maximavanov.com/)
+Fingul (https://github.com/fingul)
