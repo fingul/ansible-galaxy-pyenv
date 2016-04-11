@@ -47,7 +47,7 @@
     mode: "0644"
 
 - name: Modify .bashrc
-  lineinfile: dest="~/.bashrc"
+  lineinfile: dest="{{ pyenv_runcom }}"
               regexp="\.pyenvrc$"
               line="source {{ pyenv_path }}/.pyenvrc"
               state=present
